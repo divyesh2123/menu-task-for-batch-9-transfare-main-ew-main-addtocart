@@ -9,15 +9,24 @@
 
     <script>
 
-        let array = [-2,3,4,-5];
+        let array = [-2,3,4,-5,-2,3,4];
 
-        let postivenumvers = array.filter(function(value)
+        
+       let op = array.unshift(234);
+
+       console.log(op);
+        
+
+        let reduceInfo = array.reduce(function(pre,vale,index,array){
+
+            if(!pre.includes(vale)&& array.includes(vale,index+1))
         {
-         return value>0;   
-        })
+            pre.push(vale);
+        }
+            return pre;
+        },[])
 
-
-        console.log(postivenumvers);
+        console.log(reduceInfo);
 
 
     </script>

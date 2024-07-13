@@ -81,127 +81,158 @@ const menu = [
   },
 ];
 
-const cartItmes = [];
 
-display(menu);
+const cartItems = [];
 
 function checkout()
 {
 
-  let price = cartItmes.reduce(function(pre,curr){
+  let finalPrice = cartItems.reduce(function(pre,value){
 
-    return pre + curr.qty*curr.price;
-
+    return pre + value.qty * value.price;
   },0);
 
-  console.log(price);
-
+  alert(finalPrice);
 }
 
-function addItems(productId)
+function addCartItmes(id)
 {
-  let product =menu.find(function(value){
+ 
+  let product = menu.find(function(v){
 
-    return value.id == productId;
+   return v.id == id;
   });
 
-  let prdocutExistInCart = cartItmes.find(function(value){
+  let findFromCart = cartItems.find(function(vr){
 
-    return value.id == productId;
+    return vr.id == id;
   })
 
-  if(!prdocutExistInCart)
+  console.log(product);
+  if(findFromCart == undefined)
   {
-    product.qty =1;
-  cartItmes.push(product);
-
+    product["qty"] =1;
+  cartItems.push(product);
   }
   else
   {
-    prdocutExistInCart.qty = prdocutExistInCart.qty+1;
+    findFromCart.qty = findFromCart.qty +1;
+
   }
 
-  console.log(cartItmes);
-
+  console.log(cartItems);
 }
 
-function display(a)
-{
-  
-const newmenuItems = a.map(function(value){
 
-  return ` <article class="menu-item">
-            <img src="${value.img}" alt="menu item" class="photo" />
+function display(op)
+{
+  const menuitems = op.map(function(va,in1){
+
+    return `  <article class="menu-item">
+            <img src="${va.img}" alt="menu item" class="photo" />
             <div class="item-info">
               <header>
-                <h4>${value.title}</h4>
-                <h4 class="price">${value.price}</h4>
+                <h4>${va.title}</h4>
+                <h4 class="price">${va.price}</h4>
               </header>
               <p class="item-text">
-               ${value.desc}
+                ${va.desc}
               </p>
             </div>
-            <button class="filter-btn" onclick="addItems(${value.id})">AddToCart </button>
+            <button  class="filter-btn" onclick="addCartItmes(${va.id})">Add To Cart </button>
           </article>`
   
-  
   })
-  
-  document.getElementById("menu").innerHTML = newmenuItems.join(" ");
+
+  document.getElementById("menu").innerHTML = menuitems.join(" ");
 
 }
 
+display(menu);
 
+const categories = menu.reduce(function(pre,current){
 
-const buttons = menu.reduce(function(p,value){
-
-  if(!p.includes(value.category))
+  if(!pre.includes(current.category))
   {
-    p.push(value.category);
+    pre.push(current.category);
   }
-  return p;
-},[]).map(function(value){
+  return pre;
 
-  return `<button type="button" class="filter-btn" 
-  data-id="breakfast" onclick="filterData('${value}')">
-          ${value}
-        </button>`
-})
+},[]);
 
-document.getElementById("btn").innerHTML= buttons.join(" ");
+categories.unshift("All");
+
+let buttons = categories.map(function(v){
+
+  return `<button  class="filter-btn" onclick="filterCategory('${v}')">${v}</button>`
+});
+
+document.getElementById("btn").innerHTML = buttons.join(" ");
 
 
 
-function filterData(cateInfo)
+function filterCategory(categoryname)
 {
 
-  let filterCategory = menu.filter(function(value){
+  let filter = menu.filter(function(value){
 
-    return value.category === cateInfo;
-  })
-  display(filterCategory);
-  console.log(filterCategory);
+    return value.category == categoryname || categoryname == "All";
+  });
 
+  display(filter)
+
+  console.log(filter);
 }
 
-function arrangeArray(field,order)
+function arrangePriceLowToHight(field,order)
 {
 
   menu.sort(function(a,b){
 
-    if(field == "price" && order =="asc")
+    if(order == "asc" && typeof a[field] == "number")
     {
-   return a.price-b.price
+    return a[field]- b[field];
 
     }
-
-    else if(field =="price" && order=="desc")
+    else if(order == 'desc' && typeof a[field] == "number")
     {
-      return b.price - a.price
+
+      return b[field]-a[field];
+
 
     }
+    else if(order == 'asc' && typeof a[field] == "string")
+    {
+        if(a.title > b.title)
+        {
+          return 1;
+        }
+        else
+        {
+          return -1
+        }
+
+    }
+    else
+    { if(a.title > b.title)
+      {
+        return -1;
+      }
+      else
+      {
+        return 1
+      }
+
+    }
+    
+
+
+
   })
 
+  console.log(menu);
   display(menu);
+
+
 
 }

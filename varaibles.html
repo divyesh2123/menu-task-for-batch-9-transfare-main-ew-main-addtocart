@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <ul id="display">
+
+        </ul>
+
+        <table id="display1">
+
+        </table>
+    </div>
+
+    <script>
+
+        
+       const a=[2,3,5,6,7];
+
+       const objects = [
+
+        {
+            firstName : "Test",
+            lastName : "test1"
+        },
+        {
+            firstName : "Test1",
+            lastName : "Tes3"
+        }
+
+
+       ]
+
+       var p =  2;
+        
+       const op = a.map(function(value){
+
+            return `<li>${value}</li>`
+       });
+
+       const tables = objects.map(function(value){
+
+        return `<tr><td>${value.firstName}</td><td>${value.lastName}</td></tr>`
+       })
+
+       document.getElementById("display1").innerHTML = tables.join(" ");
+    
+    </script>
+    
+</body>
+</html>
