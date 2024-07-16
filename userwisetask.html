@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        fetch("https://jsonplaceholder.typicode.com/todos").then(function(value){
+
+            return value.json()
+        }).then(function(value){
+
+            processArray(value);
+
+        })
+
+        function processArray(abc)
+        {
+
+            let p = abc.reduce(function(pre,curr,index,array){
+
+                const findUser = pre.find(function(fvalue){
+                        return fvalue.userId == curr.userId;
+                });
+
+                console.log(findUser);
+
+                if(!findUser)
+                {
+                    const finalOp = {
+
+                        userId : curr.userId,
+                        finalStatus : array.filter(function(fvalue){
+
+                            return fvalue.userId == curr.userId
+                        }).every(function(rvalue){
+
+                            return rvalue.completed === true
+                        })
+                    }
+              
+                    pre.push(finalOp);
+              
+                }
+
+                return pre;
+
+            },[])
+
+       
+            console.log(p);
+       
+        }
+
+    </script>
+    
+</body>
+</html>
