@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="searchTerm" />
+    <button onclick="search()">Search</button>
+
+    <script>
+
+        function search()
+        {
+            let searchTerm = document.getElementById("searchTerm").value;
+
+            fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=20&format=json&origin=*&srsearch=${searchTerm}`)
+            .then(function(c){
+                return c.json()
+            }).then(function(v){
+
+                console.log(v);
+                return v;
+            })
+
+        }
+
+       
+
+    </script>
+    
+</body>
+</html>
