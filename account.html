@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  id="accountNumber"/>
+    <button onclick="addAccountInfo();">save</button>
+  
+    <ul id="display">
+
+    </ul>
+    <script>
+
+        let accountNumbers = [];
+
+        function addAccountInfo()
+        {
+            let ac = document.getElementById("accountNumber").value;
+            accountNumbers.push(ac);
+            displayAccountInfo(accountNumbers);
+
+        }
+
+        function displayAccountInfo(dis)
+        {
+            let display = dis.map(function(value){
+
+                return `<li>${formatAccount(value)}</li>`
+            });
+
+            document.getElementById("display").innerHTML = display.join(" ");
+
+        }
+
+        function formatAccount(accountNumber)
+        {
+           
+
+            return accountNumber.slice(0,4).padEnd(accountNumber.length,"*");
+            
+        }
+
+    </script>
+</body>
+</html>
