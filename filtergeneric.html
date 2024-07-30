@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="search" />
+    <button onclick="searchInfo()">Search</button>
+
+    <table id="display"></table>
+
+    <script>
+        let users = [];
+
+const searchInfo = ()=>{
+
+    let filterData = users.filter(function(v){
+        
+        
+        return Object.values(v).toString().indexOf(document.getElementById("search").value) >=0;
+
+    });
+
+    console.log(filterData);
+
+
+}
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(y=>y.json())
+        .then(y=>{
+            users = y;
+            displayInfomration(y);
+
+        });
+
+        const displayInfomration = (data)=>{
+
+            let p = data.map(function(value)
+            {
+                let d=`<tr>`;
+
+                    for (const key in value) {
+
+                        d +=checkColumn(value[key]);
+                        
+                    }
+
+                    d +="</tr>"
+
+                return d;
+            });
+
+
+            document.getElementById("display").innerHTML = p.join(" ");
+
+        }
+
+
+        function checkColumn(v)
+        {
+            let co="";
+
+            if(typeof v == "object")
+            {
+
+            for (const key in v) {
+                
+          
+                co += checkColumn(v[key]);
+            }
+
+        }
+            else
+            {
+                co +=`<td>${v}</td>`
+            }
+            
+            return co;
+            }
+
+           
+        
+
+    </script>
+    
+</body>
+</html>

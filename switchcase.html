@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" name="firstName" />
+    <span id="error-firstName"></span>
+
+    <input type="text" name="lastName" />
+    <span id="error-lastName"></span>
+
+    <button onclick="PerformValidation()">Check Validation</button>
+
+    <script>
+
+        function PerformValidation() {
+            let p = document.getElementsByTagName("input");
+
+            for (let i = 0; i < p.length; i++) {
+
+                const message = checkvalidation(p[i].name, p[i].value)
+
+                document.getElementById(`error-${p[i].name}`).innerHTML = message;
+            }
+        }
+
+        function checkvalidation(name, value) {
+            switch (name) {
+
+                case "firstName":
+
+                    if (!value) {
+                        return "Please Enter firstName";
+                    }
+                    break;
+
+                case "lastName":
+
+                    if (!value) {
+                        return "Please Enter lastNAme";
+                    }
+                    break;
+
+                default : 
+
+                console.log("invalid input");
+                 break;
+
+            }
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

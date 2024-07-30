@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    
+    <script>
+        /* try to display till using while */
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(y=>y.json())
+        .then(y=>{
+
+
+            y.map((value)=>{
+
+                for (const key in value) {
+
+
+            while(check(value[key]))
+            {
+
+
+
+            }
+                   
+                }
+            
+
+            })
+
+
+
+
+        })
+
+        function check(val)
+        {
+         if(typeof val == "object")
+         {
+            return true;
+         }
+         else 
+         {
+            console.log(val);
+            return false
+         }
+
+        }
+
+
+    </script>
+</body>
+</html>

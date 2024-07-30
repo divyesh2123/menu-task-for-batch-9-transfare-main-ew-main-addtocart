@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select onchange="handleDateConvert()" id="a">
+
+        <option value="330">India</option>
+        <option value="-600">Hawaii</option>
+        <option value="-540">Alaska</option>
+
+    </select>
+
+
+
+    <script>
+
+    const handleDateConvert = ()=>{
+
+        let d = new Date();
+
+    
+        let m = +(document.getElementById("a").value);
+        let p = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),d.getUTCHours(),d.getUTCMinutes()+m,d.getUTCSeconds());
+
+        console.log(p);
+       
+      
+       
+        console.log(p);
+
+
+    }
+        
+
+
+    </script>
+
+</body>
+</html>
