@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <form onsubmit="submitInfo(event)">
+
+                <input type="text"  name="firstName"  onblur="managevalidation(event)"/>
+                <span id="error-firstName"></span>
+
+                <input type="submit" value="save" />
+
+        </form>
+    <script>
+
+        const managevalidation = (e)=>{
+
+
+            console.log(e);
+            
+            const {name,value} =e.target;
+
+            switch(name)
+            {
+                case "firstName":
+                    
+                    if(!value)
+                    {
+                        alert("d");
+                        document.getElementById("error-firstName").innerHTML = "please enter firstname";
+
+                    }
+
+                    break;
+
+            }
+
+        }
+
+        const submitInfo = (event)=>{
+
+            event.preventDefault();
+
+            let p = new FormData(event.target);
+
+            console.log(p);
+
+        }
+
+    </script>
+</body>
+</html>

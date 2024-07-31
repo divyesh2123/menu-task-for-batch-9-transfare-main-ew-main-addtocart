@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="name" onchange="onchanged(event)" onblur="onblurd()"/>
+    
+        <select onchange="EXAMPLE()" id="name1">
+
+            <option>A</option>
+            <option>b</option>
+            <option>C</option>
+            <option>D</option>
+
+        </select>
+    <script>
+
+        const onchanged = (e)=>{
+
+
+           alert("change")
+
+        }
+
+        const onblurd = (e)=>{
+
+            alert("blur")
+        }
+
+        const EXAMPLE = ()=>{
+
+            let p = document.getElementById("name1").value;
+
+            alert(p);
+        }
+    </script>
+</body>
+</html>

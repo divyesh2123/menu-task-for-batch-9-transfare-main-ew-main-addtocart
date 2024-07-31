@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select id="country" onchange="bindState()">
+        <option>select country</option>
+
+    </select>
+
+    <select id="state">
+        <option>select state</option>
+
+    </select>
+
+    <select id="city">
+        <option>select city</option>
+
+    </select>
+    <script>
+
+       const obj =  [
+    {
+      "name": "United States",
+      "code": "US",
+      "states": [
+        {
+          "name": "California",
+          "code": "CA",
+          "cities": [
+            {
+              "name": "Los Angeles",
+              "population": 3970000
+            },
+            {
+              "name": "San Francisco",
+              "population": 884000
+            }
+          ]
+        },
+        {
+          "name": "New York",
+          "code": "NY",
+          "cities": [
+            {
+              "name": "New York City",
+              "population": 8419000
+            },
+            {
+              "name": "Buffalo",
+              "population": 256000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Canada",
+      "code": "CA",
+      "states": [
+        {
+          "name": "Ontario",
+          "code": "ON",
+          "cities": [
+            {
+              "name": "Toronto",
+              "population": 2730000
+            },
+            {
+              "name": "Ottawa",
+              "population": 934000
+            }
+          ]
+        },
+        {
+          "name": "Quebec",
+          "code": "QC",
+          "cities": [
+            {
+              "name": "Montreal",
+              "population": 1780000
+            },
+            {
+              "name": "Quebec City",
+              "population": 542000
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  
+    const bindCountry = ()=>{
+
+        const options = obj.map((v)=>{
+
+            return `<option value='${v.code}'>${v.name}</option>`
+        });
+
+        options.unshift(`<option>select country</option>`)
+
+
+        document.getElementById("country").innerHTML =options;
+    }
+
+    const bindState = ()=>{
+
+        const countrycode = document.getElementById("country").value;
+
+        const obj1 = obj.find((v)=>{
+
+            return v.code == countrycode;
+        }).states.map((v)=>{
+
+return `<option value='${v.code}'>${v.name}</option>`
+});
+        
+       
+        obj1.unshift(`<option>select country</option>`)
+
+
+        document.getElementById("state").innerHTML = obj1;
+
+
+
+    }
+
+    const bindCity = ()=>{
+
+    }
+
+    bindCountry();
+
+        
+
+
+    </script>
+    
+</body>
+</html>
