@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+    <input type="text" name="abc" class="test" value="d"/>
+
+    <script>
+
+        let op = document.getElementsByName("abc");
+
+        for(let i=0;i<op.length;i++)
+    {
+        op[i].style.color = "Red";
+    }
+
+    </script>
+</body>
+</html>
