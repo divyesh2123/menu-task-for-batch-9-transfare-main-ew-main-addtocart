@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form name="abc"  id ="abc" onsubmit="handleForm(event)">
+
+        <input type="text"  name="firstName"/>
+        <input type="text"  name="lastName"/>
+        <input type="checkbox"  name="terms"/>
+        <input type="submit" value="save"/>
+
+        cricket <input type="checkbox" value="cricket" name="ho" data-id="2"/>
+        reading <input type="checkbox" value="reading" name="ho" data-id="2" />
+        gaming <input type="checkbox" value="gaming" name="ho"data-id="2" />
+    </form>
+
+    <script>
+        
+
+        function handleForm(e)
+        {
+            let obj = {};
+            e.preventDefault();
+
+            
+
+            let p = document.forms["abc"];
+
+            console.log(p.elements[0].value);
+
+    for(let i=0;i<p.elements.length;i++)
+        {
+
+            
+
+            if(p.elements[i].type != "submit")
+        {
+         
+            if(p.elements[i].type == "checkbox" && !p.elements[i].dataset.id )
+        {
+          obj[p.elements[i].name] =p.elements[i].checked ;
+        }
+        else if(p.elements[i].type == "checkbox" && p.elements[i].dataset.id )
+        {
+        if(p.elements[i].checked == true)
+        {
+            obj[p.elements[i].name].push(p.elements[i].value)
+           if (obj[p.elements[i].name])
+           {
+            obj[p.elements[i].name].push(p.elements[i].value)
+           }
+           else
+           {
+            obj[p.elements[i].name] = [];
+            obj[p.elements[i].name].push(p.elements[i].value)
+           }
+        }
+
+        }
+        else
+        {
+            obj[p.elements[i].name] =p.elements[i].value ;
+        }
+        }
+        }
+
+        console.log(obj);
+
+        }
+
+    </script>
+</body>
+</html>
