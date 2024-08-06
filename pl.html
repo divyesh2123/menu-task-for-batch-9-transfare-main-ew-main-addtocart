@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let m = new Map();
+
+        let c="is is is the";
+
+    for(let i=0;i<c.length;i++)
+    {
+    if(m.has(c[i]) == false)
+    {
+        m.set(c[i],1);
+    }
+    else
+    {
+
+        m.set(c[i],m.get(c[i])+1);
+    }
+
+
+    }
+
+    console.log(m);
+
+       
+
+    </script>
+</body>
+</html>

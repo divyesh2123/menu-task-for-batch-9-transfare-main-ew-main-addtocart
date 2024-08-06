@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+    <div class="test">This is react</div>
+
+
+    <script>
+
+        let p = document.getElementsByClassName("test");
+        let p1= document.querySelectorAll(".test");
+        console.log(p.length);
+        console.log(p1.length);
+        let newElement = document.createElement("div");
+        newElement.className = "test";
+        document.body.append(newElement);
+
+
+        console.log(p.length);
+        console.log(p1.length);
+
+    </script>
+    
+</body>
+</html>
