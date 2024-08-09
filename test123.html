@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="errorMessage"></div>
+    <input type="text"  id="inputvalue"/>
+
+    <button onclick="handleError()">checkvalue</button>
+
+    <script>
+
+        function handleError()
+        {
+            let obj =null;
+
+        try
+        {
+            let p = document.getElementById("inputvalue").value;
+
+        if(p<0)
+        {
+            throw("Please enter postive value");
+        }
+
+    }
+
+    catch(error)
+    {
+        console.log(error);
+        document.getElementById("errorMessage").innerHTML = error;
+        
+
+    }
+    finally
+    {
+        document.getElementById("inputvalue").value = "";
+    }
+
+
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

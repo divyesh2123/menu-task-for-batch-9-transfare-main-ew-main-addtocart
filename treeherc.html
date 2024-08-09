@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <div>
+
+            <input type="checkbox" id="fullStack" onchange="handleTree(this)"/>fullStack
+
+
+            <div>
+
+                FrontEnd 
+                <input type="checkbox" id="frontend"  onchange="handleTree(this)"/>
+
+                <div>
+
+                    <input type="checkbox" id="react" /> React
+                    <input type="checkbox" id="javascript" /> javascript
+                    <input type="checkbox" id="css" /> css
+
+                </div>
+
+                
+
+
+
+            </div>
+
+
+            <div>
+
+                backend 
+                <input type="checkbox" id="backend" onchange="handleTree(this)" />
+
+                <div>
+
+                    <input type="checkbox" id="csharp" /> C#
+                    <input type="checkbox" id="sql" /> SQL
+                    <input type="checkbox" id="node" /> Node
+
+                </div>
+
+                
+
+
+
+            </div>
+
+            <div>
+
+
+                
+            </div>
+
+
+
+        </div>
+
+    <script>
+
+            const handleTree = (e)=>{
+
+                console.log(e.checked);
+                const elements = e.parentElement.querySelectorAll("input[type='checkbox']");
+
+                elements.forEach(element => {
+                    element.checked = e.checked; 
+                });
+
+
+
+            }
+
+    </script>
+    
+</body>
+</html>
