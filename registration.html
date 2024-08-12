@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form onsubmit="manageSubmit(event)">
+
+        <input type="text" id="username"/>
+        <input type="text" id="email"/>
+        <input type="text" id="password"/>
+
+        <input type="submit" value ="Save"/>
+
+
+    </form>
+
+    <script>
+
+        const manageSubmit = (e)=>{
+
+            e.preventDefault();
+
+            let obj= {};
+
+            let p = document.querySelectorAll("input[type='text']");
+
+            p.forEach((element)=>{
+
+                obj[element.id] = element.value;
+
+            });
+
+            
+
+        fetch("http://localhost:8081/api/auth/signup",{
+
+            headers: {
+                'Content-Type': "application/json"
+            },
+            method: "Post",
+            body: JSON.stringify(obj)
+
+        }).then(y=>y.json())
+        .then(y=>{
+
+            console.log(y);
+        })
+
+
+        }
+
+    </script>
+    
+</body>
+</html>

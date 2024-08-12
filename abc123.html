@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="checkbox" onchange="fullStack(this)" />full stack
+        <ul id="full">
+            <li id="fronted">
+                <input type="checkbox" onchange="fullStack(this)" />front end
+                <ul>
+                    <li><input type="checkbox" onchange="fullStack(this)" />react js</li>
+                    <li> <input type="checkbox" onchange="fullStack(this)" />html</li>
+                    <li> <input type="checkbox" onchange="fullStack(this)" />css</li>
+                </ul>
+            </li>
+            <li id="backend">
+                <input type="checkbox" onchange="fullStack(this)" />backend
+                <ul>
+                    <li><input type="checkbox" onchange="fullStack(this)" />node js</li>
+                    <li> <input type="checkbox" onchange="fullStack(this)" />express js</li>
+                    <li> <input type='checkbox' onchange="fullStack(this)">mysql</li>
+                    <li><input type='checkbox' onchange="fullStack(this)">mongo db </li>
+            </li>
+        </ul>
+        </li>
+        </ul>
+
+    </div>
+    <script>
+
+
+function fullStack(e)
+{
+    let checkvalue = e.checked;
+
+    let allcheckbox = e.parentElement.querySelectorAll("input[type='checkbox']")
+
+
+    console.log(allcheckbox);
+
+}
+
+
+
+
+    </script>
+</body>
+
+</html>
