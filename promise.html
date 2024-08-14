@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+
+let promise = new Promise(function(resolve, reject) {
+  // the function is executed automatically when the promise is constructed
+
+  // after 1 second signal that the job is done with the result "done"
+  setTimeout(() => reject("done"), 2000);
+});
+
+
+
+promise.then(y=>{
+    alert(y);
+},p=>{
+
+alert("catch");
+alert(p);
+})
+
+
+    </script>
+</body>
+</html>

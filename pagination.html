@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="displayData"></table>
+    <div id="buttons"></div>
+    <select>
+
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+    </select>
+
+    <script>
+
+let myrecord = [];
+let pageSize =10;
+
+callAPI();
+       async function callAPI()
+        {
+            let p = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+            let data = await p.json();
+
+            myrecord=data;
+
+
+            displayButton();
+
+            pagination(1);
+
+
+        }
+
+        function displayinfo(p)
+        {
+            let info = p.map((g)=>{
+               return (`<tr><td>${g.title}</td><td>${g.body}</td><td>${g.id}</td></tr>`);
+            })
+
+            document.getElementById("displayData").innerHTML =info.join(" ");
+        }
+
+        function displayButton()
+        {
+
+            let p= ""
+       for(let i=1;i<=myrecord.length/pageSize;i++)
+        {
+            p +=`<button onclick="pagination(${i})">${i}</button>`
+
+            
+        }
+
+        document.getElementById("buttons").innerHTML = p;
+        }
+
+
+
+
+        function pagination(pagenumber)
+        {
+            let start = (pagenumber-1)*pageSize;
+            let end =  start+pageSize;
+            
+            console.log(end);
+            let mydata = myrecord.slice(start,end);
+
+            console.log(mydata);
+            displayinfo(mydata);
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
