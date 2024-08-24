@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="setVideo()">
+
+    
+    <video controls onpause="callme(event)" id="p" ontimeupdate="callmeagain(event)">
+
+        <source src="mov_bbb.mp4" type="video/mp4">
+
+    </video>
+
+    <button id="p1" style="display: none;">skip</button>
+    <script>
+
+        let advetisementset = false;;
+        const callme = (e)=>{
+
+           // console.log(e.target.currentTime);
+
+            localStorage.setItem("lasttime",e.target.currentTime);
+        }
+
+        const setVideo = ()=>{
+
+            let d = +(localStorage.getItem("lasttime"));
+            
+            document.getElementById("p").currentTime = d;
+            
+        }
+
+        const callmeagain = (event)=>{
+
+            
+            console.log(event);
+        if(Math.ceil(event.target.currentTime) == 4 && event.target.src != "abc.mp4" && advetisementset==false)
+        {
+            advetisementset = true;
+
+            document.getElementById("p").src = "abc.mp4"
+
+            document.getElementById("p1").style.display = "block";
+      
+            document.getElementById("p").play();
+        }
+
+        }
+
+    </script>
+    
+</body>
+</html>
