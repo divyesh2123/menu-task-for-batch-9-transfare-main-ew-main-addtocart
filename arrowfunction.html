@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button name="button" id="display">Infomration</button>
+    <script>
+
+        class DisplayInfo {
+            constructor() {
+                this.name = "test";
+            }
+
+            display = () => {
+
+                console.log(this.name);
+
+            }
+
+        }
+
+
+        let p = new DisplayInfo();
+
+        document.getElementById("display").addEventListener("click", p.display);
+
+
+    </script>
+
+</body>
+
+</html>

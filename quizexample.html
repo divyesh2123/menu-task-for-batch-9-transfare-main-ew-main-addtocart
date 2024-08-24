@@ -33,6 +33,7 @@
         <button onclick="preQuestion()">Prev</button>
         <button onclick="skip()">skip</button>
 
+        <button style="display: none;" id="abc" onclick="checkAwnser()">Submit</button>
             
     </div>
 
@@ -179,7 +180,14 @@
                 element.parentElement.appendChild(p)
 
                 console.log();
-            })
+            });
+
+            if(index == quizQuestion.length-1 )
+            {
+                document.getElementById("abc").style.display = "block"
+
+            }
+
 
         }
 
@@ -216,8 +224,10 @@
                 let g = {questionId:index, status : va.answer == anwsers[index] }
 
                 pre.push(g);
-                return p;
-            },[])
+                return pre;
+            },[]);
+
+            console.log(p);
 
 
 
