@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        class Common
+        {
+
+            constructor(url)
+            {
+                this.url = url;
+            }
+
+            async getData()
+            {
+
+               return fetch(this.url);
+
+            }
+
+
+        }
+
+        class FetchInfo extends Common
+        {
+
+            constructor(url)
+            {
+                super(url);
+            }
+
+           static async display()
+            {
+                this.getData().then((result) => {
+                    return result.json()
+                }).then(y=>{
+
+                    console.log(y);
+                }).catch((err) => {
+                    
+                });
+            }
+
+        }
+
+        let p = new FetchInfo("https://jsonplaceholder.typicode.com/posts");
+
+        p.display();
+
+        let p1 = new FetchInfo("https://jsonplaceholder.typicode.com/posts");
+
+        p1.display();
+
+    </script>
+    
+</body>
+</html>

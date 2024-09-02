@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+            let ob = {
+
+                address : function()
+                {
+                   return this.street + " " + this.suite + " "+ this.city
+                }
+
+            }
+
+
+            fetch("https://jsonplaceholder.typicode.com/users").then(y=>y.json())
+            .then(y=>{
+
+                let ya = y;
+
+                let d = ya.map(function(t){
+
+                    return ob.address.call(t.address);
+                });
+
+                console.log(d);
+
+
+            })
+
+
+    </script>
+    
+</body>
+</html>
